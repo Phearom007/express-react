@@ -1,0 +1,48 @@
+1 . create table hero_item
+  1. h_id
+  2. h_name
+  3. h_type
+  4. h_image
+  5. h_text
+  6. h_link
+  . published
+  . createdAt
+  . updatedAt
+2 . create table banner_item
+  1. b_id
+  2. b_name
+  3. b_image
+  4. b_link
+  . published
+  . createdAt
+  . updatedAt
+3 . create table products
+  1. id
+  2. name
+  
+  . published
+  . createdAt
+  . updatedAt
+4 . create table instagram
+  1. inst_id
+  2. inst_name
+  3. inst_image_1
+  4. inst_image_2
+  5. inst_image_3
+  6. inst_image_4
+  7. inst_image_5
+  8. inst_image_6
+  9. inst_text
+  10. inst_link
+  . published
+  . createdAt
+  . updatedAt
+5 . create table blog
+  1. bg_id
+  2. bg_title
+  3. bg_image
+  4. bg_date
+  5. bg_link
+  . published
+  . createdAt
+  . updatedAt
