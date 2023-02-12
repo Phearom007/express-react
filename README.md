@@ -24,6 +24,7 @@ http://localhost:8081
 Install Sequelize - tool access database
 ```bash
 npm install sequelize --save
+npm install --save dotenv
 ```
 
 
