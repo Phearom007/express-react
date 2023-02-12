@@ -21,7 +21,7 @@ const config = {
   user: 'root',
   password: '',
   dialect: 'mysql',
-  database: 'node_project',
+  database: 'node-project',
   pool: {
     max: 5,
     min: 0,
