@@ -1,24 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import './blog.css';
-import Axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import Menu from '../Imports/Menu';
-import Header from '../Imports/Header';
-import Footer from '../Imports/Footer';
+import React, { useState, useEffect } from "react";
+import "./blog.css";
+import { useNavigate } from "react-router-dom";
+import Menu from "../Imports/Menu";
+import Header from "../Imports/Header";
+import Footer from "../Imports/Footer";
+
+import BlogItem from "../../BlogItem/BlogItem";
+import axios from "axios";
+
+// 1. Create api to data from server/backend
+const apiBlogList = () => {
+  return axios
+    .get("https://raw.githubusercontent.com/Phearom007/data/main/blog.json")
+    .then((res) => res.data);
+};
 
 const Blog = () => {
   const formatDate = (dateString) => {
-    const options = { year: "numeric", month: "long", day: "numeric" }
-    return new Date(dateString).toLocaleDateString(undefined, options)
-  }
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
 
   let navigate = useNavigate();
+
+  const [data, setData] = useState([]);
+
+  // 2. Set data to state
+  useEffect(() => {
+    apiBlogList().then((data) => {
+      // console.log('data: ', data);
+      setData(data);
+    });
+  }, []);
 
   return (
     <>
       {/* Page Preloder */}
       <div id="preloder">
-        <div class="loader"></div>
+        <div className="loader"></div>
       </div>
 
       {/* Offcanvas Menu Begin */}
@@ -29,11 +48,16 @@ const Blog = () => {
       <Header />
       {/* Header Section End  */}
 
+      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+
       {/* Breadcrumb Section Begin  */}
-      <section class="breadcrumb-blog set-bg" data-setbg="http://localhost:8081/mf_img/breadcrumb-bg.jpg">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-12">
+      <section
+        className="breadcrumb-blog set-bg"
+        data-setbg="http://localhost:8081/mf_img/breadcrumb-bg.jpg"
+      >
+        <div className="container">
+          <div className="row">
+            <div className="col-lg-12">
               <h2>Our Blog</h2>
             </div>
           </div>
@@ -42,99 +66,25 @@ const Blog = () => {
       {/* Breadcrumb Section End */}
 
       {/* Blog Section Begin */}
-      <section class="blog spad">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="blog__item">
-                <div class="blog__item__pic set-bg" data-setbg="http://localhost:8081/mf_img/blog/blog-1.jpg"></div>
-                <div class="blog__item__text">
-                  <span><img src="http://localhost:8081/mf_img/icon/calendar.png" alt="" /> 16 February 2020</span>
-                  <h5>What Curling Irons Are The Best Ones</h5>
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="blog__item">
-                <div class="blog__item__pic set-bg" data-setbg="http://localhost:8081/mf_img/blog/blog-2.jpg"></div>
-                <div class="blog__item__text">
-                  <span><img src="http://localhost:8081/mf_img/icon/calendar.png" alt="" /> 21 February 2020</span>
-                  <h5>Eternity Bands Do Last Forever</h5>
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="blog__item">
-                <div class="blog__item__pic set-bg" data-setbg="http://localhost:8081/mf_img/blog/blog-3.jpg"></div>
-                <div class="blog__item__text">
-                  <span><img src="http://localhost:8081/mf_img/icon/calendar.png" alt="" /> 28 February 2020</span>
-                  <h5>The Health Benefits Of Sunglasses</h5>
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="blog__item">
-                <div class="blog__item__pic set-bg" data-setbg="http://localhost:8081/mf_img/blog/blog-4.jpg"></div>
-                <div class="blog__item__text">
-                  <span><img src="http://localhost:8081/mf_img/icon/calendar.png" alt="" /> 16 February 2020</span>
-                  <h5>Aiming For Higher The Mastopexy</h5>
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="blog__item">
-                <div class="blog__item__pic set-bg" data-setbg="http://localhost:8081/mf_img/blog/blog-5.jpg"></div>
-                <div class="blog__item__text">
-                  <span><img src="http://localhost:8081/mf_img/icon/calendar.png" alt="" /> 21 February 2020</span>
-                  <h5>Wedding Rings A Gift For A Lifetime</h5>
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="blog__item">
-                <div class="blog__item__pic set-bg" data-setbg="http://localhost:8081/mf_img/blog/blog-6.jpg"></div>
-                <div class="blog__item__text">
-                  <span><img src="http://localhost:8081/mf_img/icon/calendar.png" alt="" /> 28 February 2020</span>
-                  <h5>The Different Methods Of Hair Removal</h5>
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="blog__item">
-                <div class="blog__item__pic set-bg" data-setbg="http://localhost:8081/mf_img/blog/blog-7.jpg"></div>
-                <div class="blog__item__text">
-                  <span><img src="http://localhost:8081/mf_img/icon/calendar.png" alt="" /> 16 February 2020</span>
-                  <h5>Hoop Earrings A Style From History</h5>
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="blog__item">
-                <div class="blog__item__pic set-bg" data-setbg="http://localhost:8081/mf_img/blog/blog-8.jpg"></div>
-                <div class="blog__item__text">
-                  <span><img src="http://localhost:8081/mf_img/icon/calendar.png" alt="" /> 21 February 2020</span>
-                  <h5>Lasik Eye Surgery Are You Ready</h5>
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-              <div class="blog__item">
-                <div class="blog__item__pic set-bg" data-setbg="http://localhost:8081/mf_img/blog/blog-9.jpg"></div>
-                <div class="blog__item__text">
-                  <span><img src="http://localhost:8081/mf_img/icon/calendar.png" alt="" /> 28 February 2020</span>
-                  <h5>Lasik Eye Surgery Are You Ready</h5>
-                  <a href="#">Read More</a>
-                </div>
-              </div>
-            </div>
+      <section className="blog spad">
+        <div className="container">
+          <div className="row">
+            {data
+              ? data.map((item, index) => {
+                  // console.log("item: ", index, item);
+                  return (
+                    <div className="col-lg-4 col-md-6 col-sm-6">
+                      <BlogItem
+                        key={index}
+                        title={item?.title}
+                        date={formatDate(item?.date)}
+                        link={item?.link}
+                        image={item?.img}
+                      />
+                    </div>
+                  );
+                })
+              : undefined}
           </div>
         </div>
       </section>
@@ -145,17 +95,21 @@ const Blog = () => {
       {/* Footer Section End  */}
 
       {/* Search Begin */}
-      <div class="search-model">
-        <div class="h-100 d-flex align-items-center justify-content-center">
-          <div class="search-close-switch">+</div>
-          <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Search here....." />
+      <div className="search-model">
+        <div className="h-100 d-flex align-items-center justify-content-center">
+          <div className="search-close-switch">+</div>
+          <form className="search-model-form">
+            <input
+              type="text"
+              id="search-input"
+              placeholder="Search here....."
+            />
           </form>
         </div>
       </div>
       {/* Search End */}
     </>
-  )
-}
+  );
+};
 
 export default Blog;

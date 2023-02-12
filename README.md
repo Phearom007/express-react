@@ -46,3 +46,8 @@ Add require dependencies
 ```bash
 npm install --save jquery axios mixitup react-router-dom
 ```
+
+Add React Bootstrap
+```bash
+npm install react-bootstrap --save
+```
