@@ -1,3 +1,6 @@
+import $ from 'jquery';
+import mixitup from 'mixitup';
+
 setTimeout(function () {
   $(".loader").fadeOut();
   $("#preloder").delay(200).fadeOut("slow");

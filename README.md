@@ -28,3 +28,20 @@ npm install sequelize --save
 
 
 # Client: reactjs
+
+Install dependencies
+```bash
+cd ./client
+npm install
+```
+
+Start server for development
+```bash
+cd ./client
+npm run start
+```
+
+Add require dependencies
+```bash
+npm install --save jquery axios mixitup react-router-dom
+```
