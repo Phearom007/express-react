@@ -16,24 +16,11 @@ const sequelize = new Sequelize(
   }
 );
 
-// const sequelize = new Sequelize(
-//     "node_project",
-//     "ravuthz",
-//     "123123",
-//     {
-//       port: config.port,
-//       host: config.host,
-//       dialect: 'postgres', // config.dialect,
-//       pool: config.pool,
-//       operatorsAliases: 0,
-//     }
-//   );
-
 const db = {};
 
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.blogs = require("./blog.model.js")(sequelize, Sequelize);
+db.Blog = require("./blog.model.js")(sequelize, Sequelize);
 
 module.exports = db;
