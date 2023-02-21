@@ -16,6 +16,7 @@ const PORT = 8081;
 const filesLocoation = path.join(__dirname, "/public/upload/");
 
 sequelizeDb.sequelize
+  // .sync({ force: true })
   .sync()
   .then(() => {
     console.log("Synced db.");

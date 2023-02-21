@@ -1,6 +1,14 @@
 {
   "dependencies": {
     "classnames": "^2.3.2",
-    "jquery": "^3.6.3"
+    "jquery": "^3.6.3",
+    "pm2": "^5.2.2"
+  },
+  "scripts": {
+    "restart:all": "pm2 restart all",
+    "start:all": "pm2 start",
+    "stop:all": "pm2 stop all",
+    "log:all": "pm2 log",
+    "pm2": "pm2"
   }
 }

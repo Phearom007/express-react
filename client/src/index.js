@@ -1,18 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import Axios from "axios";
+import { configure } from "axios-hooks";
 
-import './index.css';
-import App from './App';
+import "./index.css";
+import App from "./App";
 
-import './function';
+// import './function';
 
-console.log(process.env.REACT_APP_PORT);
-console.log(process.env.REACT_APP_API_URL);
+const { REACT_APP_PORT, REACT_APP_API_URL } = process.env;
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+console.log(REACT_APP_PORT);
+console.log(REACT_APP_API_URL);
+
+const axios = Axios.create({
+  baseURL: REACT_APP_API_URL,
+});
+
+configure({ axios, cache: false });
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
-
